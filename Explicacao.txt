@@ -1,0 +1,25 @@
+Este código é um exemplo de um sistema de chat baseado em sockets, onde os clientes e o servidor se comunicam via TCP para enviar e receber mensagens. 
+Cada cliente pode enviar mensagens para o servidor, que as retransmitirá para todos os outros clientes conectados. 
+O código está garantido em duas partes: uma para o cliente e outra para o servidor.
+
+Cliente:
+
+O cliente cria um socket para se conectar ao servidor em 'localhost' na porta 3001.
+Um thread recibe_thread iniciado para receber e imprimir mensagens do servidor.
+O cliente entra em um loop onde:
+O usuário insira uma mensagem.
+A mensagem é codificada em UTF-8 e enviada para o servidor.
+Se a mensagem for 'x', o loop é encerrado.
+
+Servidor:
+
+O servidor cria um socket para receber conexões de clientes na porta 3001.
+Um thread server_thread iniciado para tratar o envio de mensagens a partir do servidor para os clientes.
+O servidor entra em um loop infinito onde:
+Aceita uma conexão de um cliente.
+Inicia um thread cliente_thread para lidar com as mensagens desse cliente.
+Adiciona o socket do cliente a list_clients.
+Sem discussão cliente_thread:
+Receba mensagens do cliente.
+Se a mensagem for 'x', o loop é encerrado.
+Caso contrário, a mensagem é impressa e enviada a todos os outros clientes.
